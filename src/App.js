@@ -31,18 +31,33 @@ const Popular1 = ({ match }) => (
     <h2>Popular</h2>
     <ul>
       <li>
-        <Link to={`${match.url}/rendering`}>
-          Rendering with React
+        <Link to={`${match.url}/all`}>
+          All
         </Link>
       </li>
       <li>
-        <Link to={`${match.url}/components`}>
-          Components
+        <Link to={`${match.url}/javascript`}>
+          Javascript
         </Link>
       </li>
       <li>
-        <Link to={`${match.url}/props-v-state`}>
-          Props v. State
+        <Link to={`${match.url}/ruby`}>
+          Ruby 
+        </Link>
+      </li>
+      <li>
+        <Link to={`${match.url}/java`}>
+          Java 
+        </Link>
+      </li>
+      <li>
+        <Link to={`${match.url}/css`}>
+          CSS 
+        </Link>
+      </li>
+      <li>
+        <Link to={`${match.url}/python`}>
+          Python
         </Link>
       </li>
     </ul>
