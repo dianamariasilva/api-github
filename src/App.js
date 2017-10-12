@@ -54,6 +54,7 @@ const Battle = () => (
               type="text"
               placeholder="Github username"
             />
+            <Button>Submit</Button>
           </form>
         </Col>
         <Col sm={12} md={6}>
@@ -65,6 +66,7 @@ const Battle = () => (
               type="text"
               placeholder="Github username"
             />
+            <Button>Submit</Button>
           </form>
         </Col>  
       </Row>
