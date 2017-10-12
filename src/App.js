@@ -7,7 +7,10 @@ import { Grid,
         Nav, 
         NavItem, 
         Button, 
-        ButtonGroup } from 'react-bootstrap';
+        ButtonGroup,
+        ControlLabel,
+        FormGroup,
+        FormControl} from 'react-bootstrap';
 
 // import logo from './logo.svg';
 import './App.css';
@@ -21,7 +24,7 @@ import {
 const Home = () => (
   <div className="text-center">
     <h2>Github Battle: Battle your friends... and stuff.</h2>
-    <Button>
+    <Button to="/battle">
       <Link to="/battle">
         Battle
       </Link>
@@ -29,12 +32,41 @@ const Home = () => (
   </div>
 )
 
+function FieldGroup({ id, label, help, ...props }) {
+  return (
+    <FormGroup controlId={id}>
+      <ControlLabel>{label}</ControlLabel>
+      <FormControl {...props} />
+    </FormGroup>
+  );
+}
+
 const Battle = () => (
   <div>
     <Grid>
       <Row className="show-grid text-center">
-        <Col sm={12} md={6}><br/>Player 1</Col>
-        <Col sm={12} md={6}><br/>Player 2</Col>  
+        <Col sm={12} md={6}>
+          <br/>
+          <h3>Player 1</h3>
+          <form>
+            <FieldGroup
+              id="formControlsText"
+              type="text"
+              placeholder="Github username"
+            />
+          </form>
+        </Col>
+        <Col sm={12} md={6}>
+          <br/>
+          <h3>Player 2</h3>
+          <form>
+            <FieldGroup
+              id="formControlsText"
+              type="text"
+              placeholder="Github username"
+            />
+          </form>
+        </Col>  
       </Row>
     </Grid>
   </div>
@@ -47,7 +79,7 @@ const Popular = ({ match }) => (
 )
 
 const Popular1 = ({ match }) => (
-  <div>
+  <div className="text-center">
     <h2>Popular</h2>
     <ButtonGroup>
       <Button>
