@@ -18,17 +18,20 @@ import './App.css';
 import {
   BrowserRouter as Router,
   Route,
-  Link
+  Link,
+  Navbar
 } from 'react-router-dom'
 
+'use strict'
+
 const Home = () => (
-  <div className="text-center">
+  <div className="text-center title">
     <h2>Github Battle: Battle your friends... and stuff.</h2>
-    <Button to="/battle">
+    <button className="button0" to="/battle">
       <Link to="/battle">
         Battle
       </Link>
-    </Button>
+    </button>
   </div>
 )
 
@@ -54,7 +57,7 @@ const Battle = () => (
               type="text"
               placeholder="Github username"
             />
-            <Button>Submit</Button>
+            <button className="button">Submit</button>
           </form>
         </Col>
         <Col sm={12} md={6}>
@@ -66,7 +69,7 @@ const Battle = () => (
               type="text"
               placeholder="Github username"
             />
-            <Button>Submit</Button>
+            <button className="button">Submit</button>
           </form>
         </Col>  
       </Row>
@@ -126,7 +129,7 @@ const Popular1 = ({ match }) => (
 const App = () => (
   <Router>
     <div>
-      <Nav bsStyle="pills" activeKey={1}>
+      <Nav className="Nav-principal" bsStyle="pills" activeKey={1}>
         <NavItem><Link to="/">Home</Link></NavItem>
         <NavItem><Link to="/battle">Battle</Link></NavItem>
         <NavItem><Link to="/popular1">Popular</Link></NavItem>

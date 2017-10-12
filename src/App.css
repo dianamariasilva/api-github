@@ -1,4 +1,8 @@
-@import url('https://fonts.googleapis.com/css?family=Fascinate+Inline');
+@import url('https://fonts.googleapis.com/css?family=Changa+One|Fascinate+Inline');
+
+.title{
+  margin-top: 60px;
+}
 
 h2{
   font-family: 'Fascinate Inline', cursive;
@@ -27,6 +31,37 @@ h2{
 .App-intro {
   font-size: large;
 }
+
+h3{
+  font-family: 'Changa One', cursive;
+}
+
+
+.button0, button{
+  margin-top: 20px;
+  background-color: black;
+  color: white;
+  height: 35px;
+  border: none;
+  font: 100px;
+  font-family: 'Changa One', cursive;
+}
+
+.Nav-principal{
+  background-color: black;
+  color: white;
+  height: 50px;
+  font-family: 'Changa One', cursive;
+}
+
+.button{
+  width: 40%;
+}
+
+.button0{
+  width: 30%;
+}
+
 
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
