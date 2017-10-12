@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Grid, Row, Col, ListGroup, ListGroupItem, Nav, NavItem, Button, ButtonGroup } from 'react-bootstrap';
+
 // import logo from './logo.svg';
 import './App.css';
 
@@ -9,74 +11,79 @@ import {
 } from 'react-router-dom'
 
 const Home = () => (
-  <div>
-    <h2>Home</h2>
+  <div className="text-center">
+    <h2>Github Battle: Battle your friends... and stuff.</h2>
   </div>
 )
 
 const Battle = () => (
   <div>
-    <h2>Battle</h2>
+    <Grid>
+      <Row className="show-grid text-center">
+        <Col sm={12} md={6}><br/>Player 1</Col>
+        <Col sm={12} md={6}><br/>Player 2</Col>  
+      </Row>
+    </Grid>
   </div>
 )
 
-const Topic = ({ match }) => (
+const Popular = ({ match }) => (
   <div>
-    <h3>{match.params.topicId}</h3>
+    <h3>{match.params.PopularId}</h3>
   </div>
 )
 
 const Popular1 = ({ match }) => (
   <div>
     <h2>Popular</h2>
-    <ul>
-      <li>
+    <ButtonGroup>
+      <Button>
         <Link to={`${match.url}/all`}>
           All
         </Link>
-      </li>
-      <li>
+      </Button>
+      <Button>
         <Link to={`${match.url}/javascript`}>
           Javascript
         </Link>
-      </li>
-      <li>
+      </Button>
+      <Button>
         <Link to={`${match.url}/ruby`}>
           Ruby 
         </Link>
-      </li>
-      <li>
+      </Button>
+      <Button>
         <Link to={`${match.url}/java`}>
           Java 
         </Link>
-      </li>
-      <li>
+      </Button>
+      <Button>
         <Link to={`${match.url}/css`}>
           CSS 
         </Link>
-      </li>
-      <li>
+      </Button>
+      <Button>
         <Link to={`${match.url}/python`}>
           Python
         </Link>
-      </li>
-    </ul>
+      </Button>
+    </ButtonGroup>
 
-    <Route path={`${match.url}/:topicId`} component={Topic}/>
+    <Route path={`${match.url}/:PopularId`} component={Popular}/>
     <Route exact path={match.url} render={() => (
-      <h3>Please select a topic.</h3>
+      <h3>Please select a Popular.</h3>
     )}/>
   </div>
 )
 
-const BasicExample = () => (
+const App = () => (
   <Router>
     <div>
-      <ul>
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/battle">Battle</Link></li>
-        <li><Link to="/popular1">Popular</Link></li>
-      </ul>
+      <Nav bsStyle="pills" activeKey={1}>
+        <NavItem><Link to="/">Home</Link></NavItem>
+        <NavItem><Link to="/battle">Battle</Link></NavItem>
+        <NavItem><Link to="/popular1">Popular</Link></NavItem>
+      </Nav>
 
       <hr/>
 
@@ -86,4 +93,4 @@ const BasicExample = () => (
     </div>
   </Router>
 )
-export default BasicExample
+export default App
