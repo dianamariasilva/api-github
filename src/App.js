@@ -1,5 +1,13 @@
 import React, { Component } from 'react';
-import { Grid, Row, Col, ListGroup, ListGroupItem, Nav, NavItem, Button, ButtonGroup } from 'react-bootstrap';
+import { Grid, 
+        Row, 
+        Col, 
+        ListGroup, 
+        ListGroupItem, 
+        Nav, 
+        NavItem, 
+        Button, 
+        ButtonGroup } from 'react-bootstrap';
 
 // import logo from './logo.svg';
 import './App.css';
@@ -13,6 +21,11 @@ import {
 const Home = () => (
   <div className="text-center">
     <h2>Github Battle: Battle your friends... and stuff.</h2>
+    <Button>
+      <Link to="/battle">
+        Battle
+      </Link>
+    </Button>
   </div>
 )
 
