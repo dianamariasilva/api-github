@@ -21,9 +21,9 @@ import {
   Link,
   Navbar
 } from 'react-router-dom'
-
-'use strict'
-
+import {battle, fetchPopularRepos} from './api';
+ 
+ 
 const Home = () => (
   <div className="text-center title">
     <h2>Github Battle: Battle your friends... and stuff.</h2>
@@ -44,38 +44,52 @@ function FieldGroup({ id, label, help, ...props }) {
   );
 }
 
-const Battle = () => (
+const Battle = ({model}) => (
   <div>
     <Grid>
       <Row className="show-grid text-center">
         <Col sm={12} md={6}>
           <br/>
           <h3>Player 1</h3>
-          <form>
+          <form >
             <FieldGroup
               id="formControlsText"
               type="text"
               placeholder="Github username"
+              onChange={e => (model.inputValue1 = e.target.value)}
             />
-            <button className="button">Submit</button>
-          </form>
+           </form>
         </Col>
         <Col sm={12} md={6}>
           <br/>
           <h3>Player 2</h3>
-          <form>
+          <form onSubmit={e => {
+             e.preventDefault();
+              battle([
+                model.inputValue1, // https://github.com/ivanseidel
+                model.inputValue2]  // https://github.com/honcheng
+              ).then((results) => {
+                if (results === null){
+                    console.log ('Looks like there was an error!\nCheck that both users exist on github.');
+                }
+                console.log ("battle result:", results[0], results[1]);
+
+              });  
+          }}>
             <FieldGroup
               id="formControlsText"
               type="text"
               placeholder="Github username"
+              onChange={e => (model.inputValue2 = e.target.value)}
             />
-            <button className="button">Submit</button>
-          </form>
+            <input type="submit" className="button" value="Submit"></input>
+            </form>
         </Col>  
       </Row>
     </Grid>
   </div>
 )
+
 
 const Popular = ({ match }) => (
   <div>
@@ -88,58 +102,53 @@ const Popular1 = ({ match }) => (
     <h2>Popular</h2>
     <ButtonGroup>
       <Button>
-        <Link to={`${match.url}/all`}>
+        <Link to="popular1/all">
           All
         </Link>
       </Button>
       <Button>
-        <Link to={`${match.url}/javascript`}>
+        <Link to="popular1/javascript">
           Javascript
         </Link>
       </Button>
       <Button>
-        <Link to={`${match.url}/ruby`}>
+        <Link to="popular1/ruby">
           Ruby 
         </Link>
       </Button>
       <Button>
-        <Link to={`${match.url}/java`}>
+        <Link to="popular1/java">
           Java 
         </Link>
       </Button>
       <Button>
-        <Link to={`${match.url}/css`}>
+        <Link to="popular1/css">
           CSS 
         </Link>
       </Button>
       <Button>
-        <Link to={`${match.url}/python`}>
+        <Link to="popular1/python">
           Python
         </Link>
       </Button>
     </ButtonGroup>
-
-    <Route path={`${match.url}/:PopularId`} component={Popular}/>
-    <Route exact path={match.url} render={() => (
-      <h3>Please select a Popular.</h3>
-    )}/>
   </div>
 )
 
-const App = () => (
+const App = ({model}) => (
   <Router>
     <div>
       <Nav className="Nav-principal" bsStyle="pills" activeKey={1}>
-        <NavItem><Link to="/">Home</Link></NavItem>
+        <NavItem><Link exact to="/">Home</Link></NavItem>
         <NavItem><Link to="/battle">Battle</Link></NavItem>
         <NavItem><Link to="/popular1">Popular</Link></NavItem>
       </Nav>
 
       <hr/>
 
-      <Route exact path="/" component={Home}/>
-      <Route path="/battle" component={Battle}/>
-      <Route path="/popular1" component={Popular1}/>
+      <Route exact path="/" render={ () => <Home model = {model}/>}/>
+      <Route path="/battle" render={ () => <Battle model = {model}/>}/>
+      <Route path="/popular1" render={ () => <Popular1 model = {model}/>}/>
     </div>
   </Router>
 )

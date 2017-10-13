@@ -37,7 +37,7 @@ h3{
 }
 
 
-.button0, button{
+.button0, button, input{
   margin-top: 20px;
   background-color: black;
   color: white;
